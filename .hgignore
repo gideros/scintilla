@@ -5,8 +5,10 @@ syntax: glob
 *.lib
 *.obj
 *.iobj
+__pycache__
 *.pyc
 *.dll
+*.so
 *.dylib
 *.framework
 *.pyd
@@ -19,6 +21,9 @@ syntax: glob
 *.bak
 *.sbr
 *.suo
+*.aps
+*.sln
+*.vcxproj.*
 *.idb
 *.bsc
 *.intermediate.manifest
@@ -43,6 +48,7 @@ xcuserdata/
 *.xcsettings
 xcschememanagement.plist
 .DS_Store
+Release
 Debug
 cocoa/build
 cocoa/ScintillaFramework/build
@@ -68,3 +74,5 @@ meson-logs
 build.ninja
 .ninja*
 compile_commands.json
+.vscode
+VTune Profiler Results
