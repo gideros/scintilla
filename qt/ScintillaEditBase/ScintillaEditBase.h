@@ -112,7 +112,7 @@ signals:
 	void zoom(int zoom);
 	void hotSpotClick(Scintilla::Position position, Scintilla::KeyMod modifiers);
 	void hotSpotDoubleClick(Scintilla::Position position, Scintilla::KeyMod modifiers);
-	void callTipClick();
+	void callTipClick(Scintilla::Position position);
 	void autoCompleteSelection(Scintilla::Position position, const QString &text);
 	void autoCompleteCancelled();
 	void focusChanged(bool focused);

@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 5): QT += core5compat
 
 TARGET = ScintillaEdit
 TEMPLATE = lib
-CONFIG += lib_bundle
+CONFIG += lib
 CONFIG += c++1z
 
 VERSION = 5.1.5
@@ -68,9 +68,6 @@ DEFINES += SCINTILLA_QT=1 MAKING_LIBRARY=1 _CRT_SECURE_NO_DEPRECATE=1
 CONFIG(release, debug|release) {
     DEFINES += NDEBUG=1
 }
-
-DESTDIR = ../../bin
-DLLDESTDIR = ../../bin
 
 macx {
 	QMAKE_LFLAGS_SONAME = -Wl,-install_name,@executable_path/../Frameworks/

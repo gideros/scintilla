@@ -677,12 +677,12 @@ void ScintillaQt::StartDrag()
 
 class CallTipImpl : public QWidget {
 public:
-	explicit CallTipImpl(CallTip *pct_)
+    explicit CallTipImpl(CallTip *pct_)
 		: QWidget(nullptr, Qt::ToolTip),
-		  pct(pct_)
+          pct(pct_)
 	{
 #if QT_VERSION >= QT_VERSION_CHECK(5, 9, 0)
-		setWindowFlag(Qt::WindowTransparentForInput);
+        setWindowFlag(Qt::WindowTransparentForInput);
 #endif
 	}
 
@@ -695,7 +695,6 @@ public:
 			pct->PaintCT(surfaceWindow.get());
 		}
 	}
-
 private:
 	CallTip *pct;
 };
@@ -704,7 +703,7 @@ void ScintillaQt::CreateCallTipWindow(PRectangle rc)
 {
 
 	if (!ct.wCallTip.Created()) {
-		QWidget *pCallTip = new CallTipImpl(&ct);
+        QWidget *pCallTip = new CallTipImpl(&ct);
 		ct.wCallTip = pCallTip;
 		pCallTip->move(rc.left, rc.top);
 		pCallTip->resize(rc.Width(), rc.Height());

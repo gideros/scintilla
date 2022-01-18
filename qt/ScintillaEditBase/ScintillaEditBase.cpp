@@ -328,8 +328,21 @@ void ScintillaEditBase::mousePressEvent(QMouseEvent *event)
 #else
 		bool alt   = QApplication::keyboardModifiers() & Qt::AltModifier;
 #endif
+        bool handled=false;
+        if (sqt->ct.inCallTipMode)
+        {
+            QWidget *ctw=(QWidget *)sqt->ct.wCallTip.GetID();
+            QPoint ipos=ctw->mapFromGlobal(event->globalPos());
 
-		sqt->ButtonDownWithModifiers(pos, time.elapsed(), ScintillaQt::ModifierFlags(shift, ctrl, alt));
+            if (ipos.x()>=0&&ipos.y()>=0&&ipos.x()<ctw->width()&&ipos.y()<ctw->height()) {
+                Point p(ipos.x(),ipos.y());
+                sqt->ct.MouseClick(p);
+                sqt->CallTipClick();
+                handled=true;
+            }
+        }
+        if (!handled)
+            sqt->ButtonDownWithModifiers(pos, time.elapsed(), ScintillaQt::ModifierFlags(shift, ctrl, alt));
 	}
 
 	if (event->button() == Qt::RightButton) {
@@ -800,7 +813,7 @@ void ScintillaEditBase::notifyParent(NotificationData scn)
 			break;
 
 		case Notification::CallTipClick:
-			emit callTipClick();
+			emit callTipClick(scn.position);
 			break;
 
 		case Notification::AutoCSelection:
